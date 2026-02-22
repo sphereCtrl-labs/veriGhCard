@@ -1,13 +1,27 @@
+import CardForm from "@/components/features/card_form";
 import Header from "@/components/features/header";
 import { Colors } from "@/constants/theme";
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StatusBar, StyleSheet, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function HomeScreen() {
   return (
-    <View>
-      <Header />
-      <Text>this is home!</Text>
-    </View>
+    <SafeAreaView style={styles.safeArea}>
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor={Colors.light.background}
+      />
+      <ScrollView
+        style={styles.scrollView}
+        contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={false}
+      >
+        <Header />
+        <View style={styles.formContainer}>
+          <CardForm />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
@@ -21,5 +35,8 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     flexGrow: 1,
+  },
+  formContainer: {
+    flex: 1,
   },
 });
